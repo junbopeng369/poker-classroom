@@ -1,0 +1,128 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>按手牌与局面学习的多叉树</title><style>body{margin:0;background:#f4f2e9;color:#193d35;font:16px/1.8 -apple-system,"PingFang SC","Segoe UI",sans-serif}main{max-width:1100px;margin:auto;padding:26px 22px 70px}h1{font-size:32px}h2{margin-top:32px}a{color:#245b43}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d0d9c7;padding:10px;text-align:left}pre{overflow:auto;background:#e8eddf;padding:16px;border-radius:8px}code{font-size:14px}details{padding:14px;border:1px solid #d0d9c7;border-radius:8px}img{max-width:100%}</style><style>.site-language-nav{display:flex;justify-content:flex-end;align-items:center;gap:18px;padding:9px 20px;background:#102e25;color:#b8cdbb;font:12px/1.6 -apple-system,"Segoe UI",sans-serif}.site-language-nav a{color:#f2d694;text-decoration:none}.site-language-nav a:hover{text-decoration:underline}@media(max-width:720px){.site-language-nav{justify-content:center}}</style></head><body><nav class="site-language-nav" aria-label="Language / 语言"><a href="../index.html">首页 / Home</a><span>中文</span><a id="site-language-link" href="../en/decision-guide.html">English →</a></nav><main><h1>按手牌与局面学习的多叉树</h1>
+<p><a href="%E5%86%B3%E7%AD%96%E6%A0%91.html">打开交互决策树</a> · <a href="index.html">返回动画课堂</a></p>
+<p>也可以从<a href="%E5%B1%80%E9%9D%A2%E5%88%86%E7%B1%BB%E4%B8%8E%E4%BB%B7%E5%80%BC%E8%AE%AD%E7%BB%83.html">实战问题分类</a>进入：页面新增五条训练线、八个可组合维度与 35 个直达具体节点的入口，分别检查漏掉的价值、不必要的支付和过度弃牌。</p>
+<p>这个组织方式适合系统补基础：把“为什么翻前能进”与“进来后遇到什么情况”接起来，让学习者回到同一个分叉点比较不同条件。</p>
+<p>树根需要同时包含起手牌、位置、有效筹码和前面行动。翻牌后再加入人数、公共牌、下注价格与对手范围。单凭手牌名称建立固定动作，会把 AJo 的按钮开池与面对紧 UTG 大开池混在一起，也容易教出“有顶对就跟到底”的错误。</p>
+<h2>当前已经做成什么</h2>
+<ul>
+<li>169 类起手牌索引，复用原有 15 个现金桌翻前筛选场景；切换场景时，每手牌的动作颜色同步改变。</li>
+<li>20 棵人工编写的具体牌例树、191 个节点；每个节点显示手牌、公共牌、已知底池、建议与理由。</li>
+<li>新增的 10 棵树记录逐步行动和剩余筹码；可展开“这条分支怎样走到这里”核对下注与发牌经过。</li>
+<li>分支全图、逐步进入、返回分叉和路径导航；可以直接比较同一节点之后的另一种情况。</li>
+<li>需要比较价格的节点计算抽水前跟注门槛；明确区分“价格要求”与“实际权益”。</li>
+<li>每棵树都有有效深度、位置和对手假设，入口链接回对应动画课。</li>
+<li>本机保存最近浏览的手牌、场景和节点，不记录为练习通过。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>示例牌</th>
+<th>场景重点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AA</td>
+<td>超对取价值，对大加注重新判断</td>
+</tr>
+<tr>
+<td>AKs</td>
+<td>3bet 后击中 A 高面，与错失相连两色面</td>
+</tr>
+<tr>
+<td>AJo</td>
+<td>无人入池与紧前位大开池；顶对、两对、不利转牌</td>
+</tr>
+<tr>
+<td>QQ</td>
+<td>200 BB 有位置跟 3bet；高牌面与暗三条的不同路线</td>
+</tr>
+<tr>
+<td>88</td>
+<td>多人底池暗三条、错失翻牌与挤压加注</td>
+</tr>
+<tr>
+<td>JTs</td>
+<td>两头顺听牌；中牌、空白转牌、免费牌及河牌配对</td>
+</tr>
+<tr>
+<td>A5s</td>
+<td>坚果同花听牌、补牌去重与成花后遇配对牌面</td>
+</tr>
+<tr>
+<td>KQs</td>
+<td>顶对遇 A 转牌，两对遇顺子完成河牌</td>
+</tr>
+<tr>
+<td>AQo</td>
+<td>隔离后仍是多人底池，顶对的价值与反抗</td>
+</tr>
+<tr>
+<td>55</td>
+<td>有条件跟随跛入；没中放弃、免费牌、中暗三条</td>
+</tr>
+<tr>
+<td>KK</td>
+<td>4bet 底池遇 A 高面与超对面，低 SPR 的价值与防守</td>
+</tr>
+<tr>
+<td>JJ</td>
+<td>无位置面对 BTN 3bet；承受两街压力与过牌加注强牌</td>
+</tr>
+<tr>
+<td>TT</td>
+<td>平跟 CO 开池的变体；超对、高牌转牌、暗三条遇完成顺子</td>
+</tr>
+<tr>
+<td>AKo</td>
+<td>4bet 后击中顶对与错失翻牌；免费牌、河牌成顺与 5bet 价格</td>
+</tr>
+<tr>
+<td>AQs</td>
+<td>紧 UTG 大开池；顶对与同花加卡顺，成花后遇配对牌面</td>
+</tr>
+<tr>
+<td>KJs</td>
+<td>BB 对 SB 开池；有位置的顶对价值、免费牌及反加</td>
+</tr>
+<tr>
+<td>99</td>
+<td>HJ 对两个跟注者；多人高牌面、暗三条与后方过牌加注</td>
+</tr>
+<tr>
+<td>AJs</td>
+<td>200 BB 多人底池；顶对、坚果同花听牌与 BB 的反加</td>
+</tr>
+<tr>
+<td>QJs</td>
+<td>BB 防守 BTN；无位置顶对、十五张候选补牌与牌面配对</td>
+</tr>
+<tr>
+<td>76s</td>
+<td>深筹码跟随跛入；高低两个顺子端点、反向隐含赔率</td>
+</tr>
+</tbody></table>
+<h2>明确的覆盖边界</h2>
+<p><strong>169 类索引不等于 169 棵完整后续策略树。</strong> 目前有上表二十种起手牌的精讲示范；其余手牌会标明暂无专属树，同类示范需要主动切换手牌与条件，不能直接套用。</p>
+<p>TT 的新树明确研究平跟变体，原 CO 对抗表中 TT 的 3bet 核心不因此改变。KJs 的 BB 对 SB 树是一个明确条件的牌例，还不是全套 BB 对 SB 翻前范围表。AJs 与 76s 的深筹码多人树也不表示所有多人场景已补齐。</p>
+<p>每棵树展开常见对照路径，没有穷举全部公共牌、所有下注尺寸和所有对手范围。一部分叶节点会弃牌或结束示范；另一部分给出需要证据的条件判断；未展开的后续明确标注。不会把“需要估计诈唬比例”的节点伪装成已经计算过的唯一动作。</p>
+<p>翻前筛选沿用有条件的原创保守范围表，<strong>不是经过求解器验证的最优策略</strong>。原表中“面对较紧 4bet”的场景缺少固定价格，页面也会明确它只能筛选继续核心。</p>
+<p>精讲树中的底池用筹码金额表示：盲注 1/3，100 BB 是 300，200 BB 是 600。为跟踪行动采用未扣抽水的底池；真实抽水会改变门槛与边缘决策。对手倾向属于示例假设，不是对所有线下玩家的断言。</p>
+<p>本轮仅制作现金桌树；锦标赛的前注、短筹码、ICM 和赏金会改变决策，不能直接复制现金桌分支。</p>
+<h2>怎样练才有用</h2>
+<ol>
+<li>先选一手牌，对比两个翻前场景，讲出动作为什么改变。</li>
+<li>进入具体牌例前，重新读它的位置、筹码和对手假设。</li>
+<li>到一个节点时，先自己说出动作和理由，再读建议。</li>
+<li>走完一条路后回到分叉，只改变一张公共牌或一种对手动作，比较为什么需要调整。</li>
+<li>如果实桌遇到未展开的情况，记录手牌、牌面、底池和下注；据此补新的分支，而不是硬套已有叶节点。</li>
+</ol>
+<h2>后续扩展方向</h2>
+<p>本轮已经新增 KK、JJ、TT、AKo、AQs、KJs、99、AJs、QJs、76s，补了无位置面对 3bet、BB 对 SB、BB 对 BTN 和多人深筹码的具体示范。尚需扩展其余常用手牌、更多位置与尺度，以及已有树中明确未展开的后续；锦标赛树仍独立待做。每次扩展应写清条件、行动历史和数字，不能用同一段模板给几十种手牌批量生成“答案”。</p>
+<h2>构建与检查</h2>
+<p>原有数据在 <code>decision-tree-data.mjs</code>，新增十棵树在 <code>decision-tree-expanded.mjs</code>。<code>tree-ledger.mjs</code> 核对新增树的下注顺序、合法加注、剩余筹码、跟注差额和底池守恒；它不是策略求解器，也不实现边池及短全下重新开放规则。<code>build-trees.mjs</code> 将已核对的数据打包进单文件 HTML。无需网络或本地服务器，双击即可打开。</p>
+<pre><code class="language-sh">node 动画教程/build-trees.mjs
+node 动画教程/verify-trees.mjs
+</code></pre>
+<p>主课程构建也会重建决策树。检查包括全部 191 个节点的可达性、手牌与公共牌合法性、价格分母、既有范围的一致性、筛选与导航、本机记录恢复和不可保存时的行为；对新增十棵树逐步核对行动与筹码。另用独立牌力计算枚举 9 处“当前坚果”表述的可能对手手牌，并核对同花加顺子补牌去重、低顺子被高顺子压制、同花输给葫芦的示例。</p>
+<p>本轮还修正了原六个弃牌分支的牌面显示，使触发弃牌的翻牌、转牌或河牌真正显示在节点中。DOM 替身检查不等于真实浏览器布局或策略最优性验证；本次环境未进行浏览器截图检查。</p>
+</main><script>(function(){const link=document.getElementById('site-language-link');if(!link)return;const query=new URLSearchParams(location.search);if(window.PokerTrees&&query.has('case')){PokerTrees.selectCase(query.get('case'));if(query.has('node'))PokerTrees.selectNode(query.get('node'));}link.addEventListener('click',function(){const target=new URL(link.href);if(window.PokerTrees){target.searchParams.set('case',PokerTrees.state.caseId||'');target.searchParams.set('node',PokerTrees.state.nodeId||'');}else if(window.PokerStudio||window.PokerStudy){target.hash=location.hash;}link.href=target.href;});})();</script></body></html>

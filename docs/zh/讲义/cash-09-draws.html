@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>现金桌第 9 课：补牌数与听牌胜率</title><style>body{margin:0;background:#f4f2e9;color:#193d35;font:16px/1.8 -apple-system,"PingFang SC","Segoe UI",sans-serif}main{max-width:1100px;margin:auto;padding:26px 22px 70px}h1{font-size:32px}h2{margin-top:32px}a{color:#245b43}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d0d9c7;padding:10px;text-align:left}pre{overflow:auto;background:#e8eddf;padding:16px;border-radius:8px}code{font-size:14px}details{padding:14px;border:1px solid #d0d9c7;border-radius:8px}img{max-width:100%}</style><style>.site-language-nav{display:flex;justify-content:flex-end;align-items:center;gap:18px;padding:9px 20px;background:#102e25;color:#b8cdbb;font:12px/1.6 -apple-system,"Segoe UI",sans-serif}.site-language-nav a{color:#f2d694;text-decoration:none}.site-language-nav a:hover{text-decoration:underline}@media(max-width:720px){.site-language-nav{justify-content:center}}</style></head><body><nav class="site-language-nav" aria-label="Language / 语言"><a href="../../index.html">首页 / Home</a><span>中文</span><a id="site-language-link" href="../../en/transcripts/cash-09-draws.html">English →</a></nav><main><h1>现金桌第 9 课：补牌数与听牌胜率</h1>
+<p><a href="../index.html#draws">播放本课动画</a> · <a href="../index.html#cash">返回课程地图</a></p>
+<p>模块：数学：价格、胜率与未来回报</p>
+<p>目标：补牌必须干净；不能把到河牌的概率直接用于只买一张牌的跟注。</p>
+<p>画面数：5；基础播放时长约 79.45 秒，答题和朗读可能延长。</p>
+<h2>适用条件</h2>
+<ul>
+<li>线下 1/3 · 8–9 人桌</li>
+<li>例题单独注明有效筹码</li>
+<li>范围示例不是通用 GTO 表</li>
+</ul>
+<p>建议先学：<a href="../index.html#odds">上一课</a></p>
+<h2>1. 九张同花补牌</h2>
+<p><strong>你有 A♥Q♥，翻牌 J♥7♥2♣；还有九张红桃未出现。</strong></p>
+<p>十三张红桃减去两张手牌和两张公共牌，剩九张。先把九张视为干净补牌做基础计算；真实牌局还要考虑公共牌成对、对手重抽等情况。</p>
+<p>你有 A♥Q♥，翻牌 J♥7♥2♣；还有九张红桃未出现。</p>
+<h2>2. 下一张，与两张都看见</h2>
+<p><strong>翻牌到转牌中同花约 19.1%；保证看到河牌约 35.0%。</strong></p>
+<p>下一张是 9/47。两张至少中一次是 1−(38/47)×(37/46)，约 35.0%。这些是发到同花补牌的概率，不自动等于赢下底池的概率。</p>
+<p>翻牌到转牌中同花约 19.1%；保证看到河牌约 35.0%。</p>
+<h2>3. 二四法则是近似</h2>
+<p><strong>一张牌约补牌数 × 2%；两张牌约 × 4%。</strong></p>
+<p>九张补牌对应约 18% 与 36%，便于桌上估算。若翻牌跟注后仍可能在转牌付钱，不能把“保证看两张”的 36% 当作当前跟注的直接胜率。</p>
+<p>一张牌约补牌数 × 2%；两张牌约 × 4%。</p>
+<h2>4. 转牌面对全下</h2>
+<p><strong>转牌后仍有九张干净补牌，底池 30，对手全下 15。</strong></p>
+<p>假设只有完成同花才赢，其他牌都输，没有平局和后续下注。剩 46 张未知牌，实际胜率约 19.6%，跟注需要 25%。</p>
+<p>转牌后仍有九张干净补牌，底池 30，对手全下 15。</p>
+<p>练习：</p>
+<ol>
+<li>跟注，因为两张有约 36%</li>
+<li>弃牌，因为 19.6% 低于 25%</li>
+</ol>
+<details>
+<summary>参考与各选项解释</summary><ul>
+<li>其他选项「跟注，因为两张有约 36%」：已经到了转牌，只剩一张牌。</li>
+<li>参考选择「弃牌，因为 19.6% 低于 25%」：正确。本例双方已全下，也没有额外隐含收益可弥补。</li>
+</ul>
+</details><h2>5. 把补牌变成可靠估计</h2>
+<p><strong>先数牌，再确认会不会仍输、是否能免费看完。</strong></p>
+<p>听牌课的目标不是见到同花听牌就继续。先判断补牌质量与可见张数，再比较价格；若未来还有下注，进入下一课的隐含赔率分析。</p>
+<p>先数牌，再确认会不会仍输、是否能免费看完。</p>
+<p><a href="../index.html#implied">下一课：隐含赔率与反向隐含赔率</a></p>
+</main><script>(function(){const link=document.getElementById('site-language-link');if(!link)return;const query=new URLSearchParams(location.search);if(window.PokerTrees&&query.has('case')){PokerTrees.selectCase(query.get('case'));if(query.has('node'))PokerTrees.selectNode(query.get('node'));}link.addEventListener('click',function(){const target=new URL(link.href);if(window.PokerTrees){target.searchParams.set('case',PokerTrees.state.caseId||'');target.searchParams.set('node',PokerTrees.state.nodeId||'');}else if(window.PokerStudio||window.PokerStudy){target.hash=location.hash;}link.href=target.href;});})();</script></body></html>

@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第二轮：按实际场景核查遗漏</title><style>body{margin:0;background:#f4f2e9;color:#193d35;font:16px/1.8 -apple-system,"PingFang SC","Segoe UI",sans-serif}main{max-width:1100px;margin:auto;padding:26px 22px 70px}h1{font-size:32px}h2{margin-top:32px}a{color:#245b43}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d0d9c7;padding:10px;text-align:left}pre{overflow:auto;background:#e8eddf;padding:16px;border-radius:8px}code{font-size:14px}details{padding:14px;border:1px solid #d0d9c7;border-radius:8px}img{max-width:100%}</style><style>.site-language-nav{display:flex;justify-content:flex-end;align-items:center;gap:18px;padding:9px 20px;background:#102e25;color:#b8cdbb;font:12px/1.6 -apple-system,"Segoe UI",sans-serif}.site-language-nav a{color:#f2d694;text-decoration:none}.site-language-nav a:hover{text-decoration:underline}@media(max-width:720px){.site-language-nav{justify-content:center}}</style></head><body><nav class="site-language-nav" aria-label="Language / 语言"><a href="../index.html">首页 / Home</a><span>中文</span><a id="site-language-link" href="../en/coverage-audit.html">English →</a></nav><main><h1>第二轮：按实际场景核查遗漏</h1>
+<h2>结论</h2>
+<p>现有 57 课已经覆盖多数主干概念，并加入了实际算例与训练工具；但仍不能称为“所有常见场景都已经教全”。这次发现的主要问题是<strong>动作之间的衔接不够、范围表覆盖不均，以及从假设范围到权益和收益的计算环节仍有缺口</strong>。</p>
+<p>本次依据实际课程讲稿、题目、25 张范围表的动作数据、60 道训练台题目和计算器实现复核，不以标题或课数判断完整度。</p>
+<h2>优先补充的知识</h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>内容</th>
+<th>现有内容与确切缺口</th>
+<th>补到能用的标准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高</td>
+<td>多人跛入后的选牌与跟入</td>
+<td><a href="index.html#isolation">隔离课</a>有 AQo 对两名跛入者加注；没有系统处理小对子、同花连张等牌在多人跛入时的加注、跟入、弃牌，也没覆盖很多普通跛入底池的翻后</td>
+<td>给出位置、人数、价格、筹码与对手假设，比较隔离加注、跟随跛入、弃牌，并走完至少两个有后续下注的牌例</td>
+</tr>
+<tr>
+<td>高</td>
+<td>跟随多个跟注者入池及多人深筹码后续</td>
+<td><a href="index.html#c-case-multi">多人整手课</a>刻意使用两个短筹码全下，能够直接用最终权益比赔率；它没有替代 100–200 BB 多人底池中的后续策略</td>
+<td>区分前面只跛入与已加注再有跟注者；完整分析薄顶对、听牌及强牌面对多人持续行动的选择</td>
+</tr>
+<tr>
+<td>高</td>
+<td>尚有未来公共牌时的范围权益与权益实现</td>
+<td>已有河牌固定范围按组合数计算权益的例子；但翻前、翻牌及多人局面多直接给定 15%、45% 等权益。当前工具没有手牌对范围的跑牌枚举或模拟</td>
+<td>对一个明确的翻前或翻牌范围，移除已知牌后枚举／模拟未来公共牌，计算权益，再比较行动，说明抽样误差和权益实现</td>
+</tr>
+<tr>
+<td>高</td>
+<td>半诈唬与不同尺寸的完整收益比较</td>
+<td>已讲纯诈唬门槛和价值下注；半诈唬多是口头提到“弃牌收益加改善机会”，没有把两条收益路径放进同一个数字例子</td>
+<td>在明确的全下模型中，同时使用对手弃牌率与被跟后权益；比较至少两个动作，避免只看单一胜率或单一弃牌率</td>
+</tr>
+<tr>
+<td>高</td>
+<td>后门听牌、转牌继续进攻与防守连续下注</td>
+<td>有普通听牌、价值续注、延迟下注；缺少后门听牌怎样选择转牌继续、怎样挑选后续诈唬，以及面对两街／三街进攻的成套防守</td>
+<td>同一翻牌分别换有利与不利转牌，对照继续下注、过牌和放弃；防守方同样逐街更新范围</td>
+</tr>
+<tr>
+<td>高</td>
+<td>盲位与翻前反应的缺失场景</td>
+<td>现金桌具体防守表主要集中在 BTN 对 UTG/CO、SB 对 BTN、BB 对 BTN，以及 BTN 对 SB 的 3bet；没有 BB 对 SB 开池、较多前中位组合和无位置面对 3bet 的成套表</td>
+<td>按“我的位置 × 对手位置 × 尺寸 × 有效深度”建立明确的场景清单，并给每个优先场景的继续依据</td>
+</tr>
+<tr>
+<td>高（参赛前）</td>
+<td>锦标赛位置与深度的继续范围</td>
+<td>10 张锦标赛表中，6 张为 BTN 首次入池，1 张为 BTN 跟紧范围全下，其余是 CO 8 BB、SB 8 BB、HU/SB 12 BB。前中位和多种再推／跟推场景仍不齐</td>
+<td>补前中位、小盲与大盲的常见对抗，以及不同深度面对小 3bet、再全下时的继续；注明前注与奖金条件</td>
+</tr>
+<tr>
+<td>中</td>
+<td>平局、公共牌成牌与一般权益</td>
+<td>许多数学例子明确忽略平局，这是合理简化，但还没把一般情况讲全</td>
+<td>教清最佳五张、踢脚与分池；双人同池权益为获胜概率加一半平局概率，多人／边池按各自分配处理</td>
+</tr>
+<tr>
+<td>中</td>
+<td>强牌过牌、范围保护与反制</td>
+<td>已提醒过牌也能有强牌，但缺少比较慢打、直接价值下注和保护过牌范围的完整例子</td>
+<td>让强牌与中等牌在同一牌面选择不同路线，说明错失价值、保护与诱导的代价</td>
+</tr>
+<tr>
+<td>中</td>
+<td>3bet 的更多牌面与 4bet 底池翻后</td>
+<td><a href="index.html#c-3bet-flop">3bet 翻牌课</a>主要用 A 高牌面对照 AK/JJ；4bet 课程主要在翻前</td>
+<td>补中低连张、配对、单色等牌面的攻防，并独立示范一个 4bet 底池的翻后决定</td>
+</tr>
+<tr>
+<td>后续参赛专题</td>
+<td>真实赏金估值与更大的赛事模型</td>
+<td>赏金例子将即时奖励价值假定为 4 BB，并未推导真实赛事的换算；ICM 工具最多 9 人，已明确不处理更大的完整多桌模型</td>
+<td>选定真实赛制后，解释奖励估值的输入和局限；不以单桌筹码替代全场数据</td>
+</tr>
+</tbody></table>
+<p>“跛入后跟入”和“已经有人加注、又有人跟注后的再次跟注”是不同场景。已有隔离加注课，不能自动视为这两类都已教全。</p>
+<h2>范围表与标注的复核发现</h2>
+<h3>1. 20/30/40 BB 三张 BTN 表使用相同手牌动作</h3>
+<p>代码核对结果为完全一致。它们有不同的深度说明，作为共享开池核心是有意的简化，<strong>不等于三种深度的整个继续策略已分别建好</strong>。剩余缺口是面对再推、小再加以及翻后行动的策略。</p>
+<h3>2. 200 BB 的 AKo 标注容易引导过度弃牌</h3>
+<p>原表把 AKo 放在黄色区域，而全局说明又将资料不足时的黄色归为弃牌，这容易让学习者误以为“因为变深，所以 AKo 默认不继续”。本轮把它改为<strong>在明确的合理非坚果 SB 3bet 假设下，采用平跟基准</strong>，并说明 4bet 及面对极紧范围需要另评估。</p>
+<p>这是教学标注与既定假设的一致性修正，<strong>不是已经用完整博弈树证明平跟最优</strong>。现有表格整体仍是原创教学基准；组合合法、比例算对，不代表每一个动作已经经过 EV 验证。</p>
+<h3>3. “六类翻牌”的标题不准确</h3>
+<p>该课实际明确展开 A 高干燥、相连两色、配对、单色四类结构，并加了位置和人数讨论。已将标题改为“典型翻牌”，同时将尚未充分展开的牌面与底池组合列为待补，避免用标题夸大覆盖。</p>
+<h3>4. 部分表只适合作为筛选清单</h3>
+<p>例如“面对较紧 4bet”没有完整固定的对手范围与加注价格，不能把它当成面对任意 4bet 都能直接照做的策略。需要先补齐参数、解释推导或采用可核验的参考，再校准边缘动作。</p>
+<h2>训练深度仍需加强</h2>
+<ul>
+<li>60 道训练台题目按当前标签分为：赔率 12、抽水 6、规则 10、组合 4、河牌 6、ICM 6、尺度 4、具体行动 12。数学与规则训练较多，实际范围及行动线路判断仍较少。</li>
+<li>现有整手演练是预设路线，回答不同选项会得到反馈，但后续仍进入同一条演示线路；尚不是完整的分支对抗模拟。</li>
+<li>文字理由目前只保存、不自动评判，这一点仍然保留。真正的范围推理能力需要复盘这些理由，而不能仅看选项答对次数。</li>
+<li>这些属于训练深度与验证的不足，不应被表述为“完全没有讲过该知识点”。</li>
+</ul>
+<h2>哪些不是本轮应重复算作遗漏</h2>
+<p>底池赔率、基础组合、河牌固定范围的组合权益、普通与组合听牌、过牌加注、延迟下注、超池、MDF、几何下注、ICM 数字例子、边池与短全下、普通赏金与卫星赛区别，都已有实际课程。后续应填它们的场景空白与应用链，不必再以相同标题重复制作。</p>
+<p>真实桌子的抽水、straddle 和具体对手数据尚未提供，属于<strong>实桌信息未确认</strong>；课程已经教过记录这些信息，不能把缺少用户数据算成又漏了一门课。</p>
+<h2>对当前学习者的顺序建议</h2>
+<ol>
+<li>优先处理 1/3 常见的多人跛入、再次跟入和 BB 对 SB 场景。</li>
+<li>补“范围 → 权益 → 行动 EV”，包含平局、半诈唬和不同尺寸比较，并复核现有表格中容易教偏的边界牌。</li>
+<li>补转河牌继续进攻与防守的对照训练。</li>
+<li>参赛前补齐锦标赛的前中位、盲位以及不同深度的再推／跟推场景。</li>
+</ol>
+<p>本轮完成审查，并修正了两处明确的教学标注。以上待补知识尚未因此变成新动画；不把审查或测试通过当成新增课程已经完成。</p>
+<h2>后续进展：2026-11-11 决策树扩充</h2>
+<p><a href="%E5%86%B3%E7%AD%96%E6%A0%91.html">交互决策树</a>现已制作 20 棵现金桌精讲树、191 个节点。本次新增十棵树，具体补到 JJ 无位置面对 3bet、KK/AKo 的 4bet 底池、KJs 的 BB 对 SB、QJs 的 BB 对 BTN，以及 99/AJs/76s 的多人和深筹码后续。新增节点带行动历史和剩余筹码，可比较不同公共牌与对手行动。</p>
+<p>这些是明确条件下的分支示范，不是全局范围或所有局面的策略。BB 对 SB 的完整翻前矩阵、全套无位置防守表、手牌对范围的未来权益模拟、半诈唬动作 EV，以及锦标赛多位置决策树等缺口仍保留。原动画课程的预设播放路线没有因新增独立决策树而变成对抗模拟。</p>
+</main><script>(function(){const link=document.getElementById('site-language-link');if(!link)return;const query=new URLSearchParams(location.search);if(window.PokerTrees&&query.has('case')){PokerTrees.selectCase(query.get('case'));if(query.has('node'))PokerTrees.selectNode(query.get('node'));}link.addEventListener('click',function(){const target=new URL(link.href);if(window.PokerTrees){target.searchParams.set('case',PokerTrees.state.caseId||'');target.searchParams.set('node',PokerTrees.state.nodeId||'');}else if(window.PokerStudio||window.PokerStudy){target.hash=location.hash;}link.href=target.href;});})();</script></body></html>

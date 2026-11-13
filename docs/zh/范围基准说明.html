@@ -1,0 +1,600 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>翻前教学基准说明</title><style>body{margin:0;background:#f4f2e9;color:#193d35;font:16px/1.8 -apple-system,"PingFang SC","Segoe UI",sans-serif}main{max-width:1100px;margin:auto;padding:26px 22px 70px}h1{font-size:32px}h2{margin-top:32px}a{color:#245b43}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow:auto}th,td{border:1px solid #d0d9c7;padding:10px;text-align:left}pre{overflow:auto;background:#e8eddf;padding:16px;border-radius:8px}code{font-size:14px}details{padding:14px;border:1px solid #d0d9c7;border-radius:8px}img{max-width:100%}</style><style>.site-language-nav{display:flex;justify-content:flex-end;align-items:center;gap:18px;padding:9px 20px;background:#102e25;color:#b8cdbb;font:12px/1.6 -apple-system,"Segoe UI",sans-serif}.site-language-nav a{color:#f2d694;text-decoration:none}.site-language-nav a:hover{text-decoration:underline}@media(max-width:720px){.site-language-nav{justify-content:center}}</style></head><body><nav class="site-language-nav" aria-label="Language / 语言"><a href="../index.html">首页 / Home</a><span>中文</span><a id="site-language-link" href="../en/range-guide.html">English →</a></nav><main><h1>翻前教学基准说明</h1>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html">打开交互范围表</a></p>
+<p>这些是为本项目原创编排的保守教学起点，不是 GTO 求解器输出、纳什表或真实玩家数据库。绿色和蓝色给出可练习的核心动作；黄色需要额外条件，资料不足按本保守策略弃牌。不能把覆盖百分比当胜率，也不把黄色当固定随机频率。</p>
+<h2>构造方法与限制</h2>
+<p>先以较强对子、大牌、同花与连接能力建立核心，再按后方人数、位置、进入价格和预计支付调整。高抽水、大尺度和被支配风险会削弱边缘平跟；更深时要同时检查位置、坚果潜力和未来投入。本表没有完成整个游戏树的最优化，因此可能放弃一些可盈利的边缘或混合动作。</p>
+<p>现金桌主表采用明确的示例结构。实际常玩的抽水、straddle 与对手尚需确认；在条件不同的局面必须重新评估。锦标赛推弃子策略限制了动作空间，不能称为包含跛入、小加注和 ICM 的完整最优解。</p>
+<h2>记号</h2>
+<ul>
+<li>s：同花；o：不同花；对子不加后缀。</li>
+<li>55+：55 到 AA。A9s+：A9s、ATs、AJs、AQs、AKs。</li>
+<li>55-99：从 55 到 99。A2s-A5s：固定 A，从 A2s 到 A5s。</li>
+<li>跟注在单挑小盲无人入池表中表示补齐到一个大盲，其他表按场景说明。</li>
+</ul>
+<h2>原理与规则参考</h2>
+<ul>
+<li><a href="https://www.pokertda.com/view-poker-tda-rules/">Poker TDA 官方规则</a>：短全下、累计重新开放及大筹码规则；现金桌以所在牌室规则为准。</li>
+<li><a href="https://blog.gtowizard.com/">GTO Wizard 公开教学文章</a>：位置、抽水、权益实现、范围与尺度的关系。</li>
+<li><a href="https://upswingpoker.com/blog/">Upswing 公开教学</a>：翻前与翻后策略的公开讨论。</li>
+<li><a href="https://www.holdemresources.net/nash">HoldemResources 单挑推弃工具</a>：特定两人推弃模型的参考，未复制它的数值表。</li>
+</ul>
+<p>下面的具体范围为本项目原创，以上链接用于核对原理与适用边界，不表示这些网站为本表的具体数值背书。</p>
+<h2>UTG 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-utg">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>55+,A9s+,KTs+,QTs+,JTs,T9s,98s,AJo+,KQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>UTG+1 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-utg1">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>44+,A8s+,A5s-A4s,KTs+,QTs+,JTs,T9s,98s,87s,AJo+,KQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>UTG+2 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-utg2">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>44+,A7s+,A5s-A4s,KTs+,QTs+,JTs,T9s,98s,87s,ATo+,KQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>LJ 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-lj">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>44+,A2s+,K9s+,Q9s+,J9s+,T9s,98s,87s,76s,ATo+,KJo+,QJo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>HJ 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-hj">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>33+,A2s+,K8s+,Q9s+,J9s+,T8s+,98s,87s,76s,65s,A9o+,KTo+,QTo+,JTo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>CO 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-co">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K5s+,Q7s+,J8s+,T8s+,97s+,87s,76s,65s,54s,A7o+,K9o+,Q9o+,J9o+,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>BTN 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-btn">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K2s+,Q4s+,J6s+,T6s+,96s+,86s+,75s+,65s,54s,A2o+,K7o+,Q8o+,J8o+,T8o+,98o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>SB 首次加注 · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#rfi-sb">查看矩阵与练习</a></p>
+<p>无限注；9 人桌；有效 100 BB；无前注/straddle；无人入池；加到约 3 BB（SB 约 3.5–4 BB）；示例抽水 5%、封顶 2 BB。保守教学起点，非 GTO。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K2s+,Q6s+,J7s+,T7s+,97s+,86s+,76s,65s,54s,A2o+,K9o+,Q9o+,J9o+,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色为本简化基准中的开池；灰色默认弃牌。</li>
+<li>200 BB 不自动扩大这张开池表；深度调整另看面对加注的专用表。</li>
+<li>8 人桌按按钮向前数位置：UTG 参考此表 UTG+1，UTG+1 参考 UTG+2，其余后位对应不变。</li>
+<li>实际抽水、开池尺度或对手不同，边缘牌要重新评估。</li>
+</ul>
+<h2>BTN 面对较紧 UTG 加到 5 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#btn-v-utg">查看矩阵与练习</a></p>
+<p>9 人桌，100 BB，UTG 开池较紧，加到 5 BB；无其他跟注，盲位未行动；抽水同示例。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>QQ+,AKs,AKo</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>TT-JJ,AQs</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>88-99,AJs,KQs</td>
+</tr>
+</tbody></table>
+<ul>
+<li>其余牌默认弃；AJo、KQo 不因位置好而自动跟。</li>
+<li>黄色：需要更宽的开池证据、较低的后方挤压风险和可实现的回报；资料不足先弃。</li>
+<li>这是偏保守的线下教学基准；QQ、AK 遇到极紧再次加注仍需重新判断。</li>
+</ul>
+<h2>BTN 面对 CO 加到 3 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#btn-v-co">查看矩阵与练习</a></p>
+<p>100 BB，CO 开池约本教学 CO 范围；盲位较被动；3bet 有位置可先分析到 9–10 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>TT+,AQs+,AQo+</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>55-99,ATs-AJs,KJs-KQs,QJs,JTs,T9s,98s</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>44,A9s,A5s-A4s,KTs,QTs,J9s,87s,AJo,KQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>黄色中的 AJo/KQo 需要比较 3bet 的弃牌收益与被跟范围，不默认平跟。</li>
+<li>对 3bet 常跟弱牌时，AJs/KQs 可转向价值再加；盲位爱挤压时减少边缘平跟。</li>
+<li>并非所有继续牌只能采取一个动作；表展示一个简化策略。</li>
+</ul>
+<h2>SB 面对 BTN 加到 3 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#sb-v-btn">查看矩阵与练习</a></p>
+<p>100 BB，BTN 使用较宽开池范围，BB 尚未行动；简化为 3bet 或弃牌，先分析加到 12 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>99+,ATs+,KJs+,AQo+</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>77-88,A9s,A5s-A2s,KTs,QTs+,JTs,AJo,KQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>黄色只有在 BTN 足够弃牌或继续明显较弱时才加入；没有证据按弃牌处理。</li>
+<li>主动挤压与平跟进入无位置底池，是不同的风险。</li>
+</ul>
+<h2>BB 面对 BTN 加到 3 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#bb-v-btn">查看矩阵与练习</a></p>
+<p>100 BB，SB 已弃；BTN 较宽开池，示例抽水 5% 封顶 2 BB；BB 再付 2 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>TT+,AJs+,KQs,AQo+</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>22-99,A2s-ATs,K8s-KJs,Q9s+,J9s+,T8s+,97s+,87s,76s,65s,54s,A8o-AJo,KTo+,QTo+,JTo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K7s,Q7s-Q8s,J8s,96s,86s,75s,64s,A2o-A7o,K9o,Q9o,J9o,T9o,98o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>黄色是否保留要看开池宽度、尺度、抽水及翻后能力。</li>
+<li>面对 5 BB 或前位较紧开池，不能继续使用本表的宽防守。</li>
+</ul>
+<h2>BTN 面对 SB 3bet · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#ip-v-3bet100">查看矩阵与练习</a></p>
+<p>BTN 开到 10，SB 再加到 40，BB 弃；1/3，无前注，100 BB。SB 有合理的非坚果再加范围。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>QQ+,AKs,AKo</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>99-JJ,AJs-AQs,KQs</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>88,ATs,KJs,QJs,JTs,AQo,A5s</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色是可考虑 4bet 的价值核心，不等于面对 5bet 全部无条件打光。</li>
+<li>黄色在 SB 很紧时默认放弃；对宽范围可研究跟注或带阻断的 4bet。</li>
+<li>这张表不适用于“SB 只用 KK+ 再加”的对手。</li>
+</ul>
+<h2>BTN 面对同样 3bet · 200 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#ip-v-3bet200">查看矩阵与练习</a></p>
+<p>BTN 开到 10、SB 再加到 40；有效 600。假设 SB 有合理的非坚果再加范围，包含足够的 AQ、同花大牌等。跟注后底池 83、剩 560，SPR 约 6.75。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>KK+,AKs</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>88-QQ,AJs-AQs,KJs-KQs,QJs,JTs,T9s,98s,AKo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>77,ATs,A5s-A4s,QTs,87s,76s,AQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>比 100 BB 更重视位置与强牌潜力，避免把一对牌过度投入。</li>
+<li>QQ 和 AKo 在本例条件下采用平跟基准，不排除 4bet；对手极紧时应另建范围，不能只因筹码变深就默认弃 AKo。</li>
+<li>深筹码也不保证对手支付，黄色资料不足先放弃。</li>
+</ul>
+<h2>面对较紧的 4bet · 100 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#v-tight-4bet">查看矩阵与练习</a></p>
+<p>自己已 3bet；对手的继续范围较紧、缺乏轻 4bet 证据。此表仅筛选继续核心，具体加到多少由当前价格决定。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>KK+</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>QQ,AKs,AKo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>黄色需比较对手 4bet/跟全下范围与当前赔率；其余先弃。</li>
+<li>若对手足够宽，应另建跟注和全下范围，而不是照搬此紧范围表。</li>
+</ul>
+<h2>BTN 首先行动 · 8 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn8">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全下</td>
+<td>22+,A2s+,K2s+,Q5s+,J7s+,T7s+,97s+,87s,76s,65s,A2o+,K7o+,Q9o+,J9o+,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>本表采用简化推弃策略；强牌小加注有时更好，未在此策略中使用。</li>
+<li>后方玩家明显跟得过宽、存在 ICM 时，重新调整边缘牌。</li>
+</ul>
+<h2>CO 首先行动 · 8 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-co8">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全下</td>
+<td>22+,A2s+,K7s+,Q9s+,J9s+,T9s,98s,A8o+,KTo+,QJo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>CO 后方多一名玩家，保守基准比 BTN 紧。</li>
+</ul>
+<h2>SB 首先行动 · 8 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-sb8">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全下</td>
+<td>22+,A2s+,K2s+,Q2s+,J3s+,T4s+,95s+,85s+,74s+,64s+,54s,A2o+,K2o+,Q5o+,J7o+,T7o+,97o+,87o,76o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>只剩 BB 时争夺死钱的机会更多；本表限制为全下/弃牌，不是小盲完整混合策略。</li>
+<li>按实际前注支付规则计算可匹配筹码；临近奖金圈不要直接套用。</li>
+</ul>
+<h2>BTN 首先行动 · 12 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn12">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>全下</td>
+<td>22+,A2s+,K7s+,Q9s+,J9s+,T9s,98s,A7o+,KTo+,QJo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K6s,Q6s-Q8s,J7s-J8s,T8s,97s,87s,76s,65s,A2o-A6o,K9o,QTo,JTo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>这是方便学习的保守推弃子策略，不宣称优于所有小加注方案。</li>
+</ul>
+<h2>BTN 首先行动 · 15 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn15">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>77+,ATs+,K7s+,Q9s+,J9s+,T8s+,98s,87s,AJo+,KTo+,QTo+,JTo</td>
+</tr>
+<tr>
+<td>全下</td>
+<td>22-66,A2s-A9s,A8o-ATo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K6s,Q6s-Q8s,J7s-J8s,T7s,97s,86s,76s,65s,54s,A2o-A7o,K9o,Q9o,J9o,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>绿色小加注先按 2 BB 分析；紫色直接推。</li>
+<li>黄色需看盲位弃牌/再推倾向，默认资料不足弃牌。小加注后对再推另作判断。</li>
+</ul>
+<h2>BTN 首次开池 · 20 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn20">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。 当前 20 BB，小加注基准 2–2.2 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K7s+,Q9s+,J9s+,T8s+,98s,87s,A8o+,KTo+,QTo+,JTo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K6s,Q6s-Q8s,J7s-J8s,T7s,97s,86s,76s,65s,54s,A2o-A7o,K9o,Q9o,J9o,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>核心开池表保持一致，变化重点在面对再推/3bet 的计划，不机械按 BB 数增减每一手牌。</li>
+<li>20 BB：先检查自己加注后面对再推的价格。</li>
+</ul>
+<h2>BTN 首次开池 · 30 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn30">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。 当前 30 BB，小加注基准 2–2.2 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K7s+,Q9s+,J9s+,T8s+,98s,87s,A8o+,KTo+,QTo+,JTo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K6s,Q6s-Q8s,J7s-J8s,T7s,97s,86s,76s,65s,54s,A2o-A7o,K9o,Q9o,J9o,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>核心开池表保持一致，变化重点在面对再推/3bet 的计划，不机械按 BB 数增减每一手牌。</li>
+<li>30 BB：小 3bet 与再全下并存，需要区分反应范围。</li>
+</ul>
+<h2>BTN 首次开池 · 40 BB</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-btn40">查看矩阵与练习</a></p>
+<p>普通赛事早中期、无明显 ICM/赏金压力；9 人桌；大盲前注 1 BB；无人入池；有效深度按扣除死前注后的可匹配筹码计算，已下活盲计入本轮投入。以下为原创保守教学基准，非 Nash 推弃表。 当前 40 BB，小加注基准 2–2.2 BB。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>22+,A2s+,K7s+,Q9s+,J9s+,T8s+,98s,87s,A8o+,KTo+,QTo+,JTo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>K2s-K6s,Q6s-Q8s,J7s-J8s,T7s,97s,86s,76s,65s,54s,A2o-A7o,K9o,Q9o,J9o,T9o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>核心开池表保持一致，变化重点在面对再推/3bet 的计划，不机械按 BB 数增减每一手牌。</li>
+<li>40 BB：后续街更多，不把小对子和同花牌当作自动盈利跟注。</li>
+</ul>
+<h2>面对较紧 15 BB 全下：继续筛选</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#t-call-tight15">查看矩阵与练习</a></p>
+<p>BTN 面对前位按 77+、AJs+、AQo+、KQs 的假设范围推 15 BB；其他人已弃，盲位尚未行动；无明显奖金压力。此表是假设紧推范围的保守起点，具体牌价必须计算。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>跟注</td>
+<td>TT+,AQs+,AKo</td>
+</tr>
+<tr>
+<td>条件继续</td>
+<td>77-99,AJs,ATs,AQo</td>
+</tr>
+</tbody></table>
+<ul>
+<li>黄色只有在对手推牌更宽、后方风险与价格支持时才跟；资料不足先弃。</li>
+<li>主动推牌有弃牌收益，跟全下没有，不能把 BTN 推牌表当作跟推表。</li>
+</ul>
+<h2>单挑 SB/BTN · 12 BB 含跛入策略</h2>
+<p><a href="%E8%AE%AD%E7%BB%83%E5%8F%B0.html#hu-sb12">查看矩阵与练习</a></p>
+<p>普通赛事单挑，未计前注，12 BB；SB 兼按钮、翻前先行动；本例 BB 对跛入偏被动。蓝色跟注指补齐到 1 BB（跛入），不是跟对手加注。原创简化策略，非 Nash 解。</p>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>手牌记号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加注</td>
+<td>TT+,ATs+,KJs+,AQo+</td>
+</tr>
+<tr>
+<td>全下</td>
+<td>22-66,A2s-A9s,A2o-AJo,KTo-KJo,QTo-QJo,JTo</td>
+</tr>
+<tr>
+<td>跟注</td>
+<td>77-99,K2s-KTs,Q2s+,J4s+,T5s+,95s+,85s+,75s+,64s+,54s,K2o-K9o,Q2o-Q9o,J3o-J9o,T4o+,95o+,85o+,75o+,64o+,54o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>单挑要扩大参与范围；本基准引入大量补齐盲注，保留翻牌后位置。</li>
+<li>绿色小加到 2 BB，紫色直接推；蓝色补齐后面对 BB 加注，还需按价格和范围作第二次决定。</li>
+<li>若 BB 频繁攻击跛入，减少弱不同花补齐牌，并研究强牌跛入保护；本表不是对所有对手的均衡解。</li>
+</ul>
+</main><script>(function(){const link=document.getElementById('site-language-link');if(!link)return;const query=new URLSearchParams(location.search);if(window.PokerTrees&&query.has('case')){PokerTrees.selectCase(query.get('case'));if(query.has('node'))PokerTrees.selectNode(query.get('node'));}link.addEventListener('click',function(){const target=new URL(link.href);if(window.PokerTrees){target.searchParams.set('case',PokerTrees.state.caseId||'');target.searchParams.set('node',PokerTrees.state.nodeId||'');}else if(window.PokerStudio||window.PokerStudy){target.hash=location.hash;}link.href=target.href;});})();</script></body></html>
